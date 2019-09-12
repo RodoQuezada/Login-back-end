@@ -90,15 +90,18 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         String token = jwtService.create(authResult);
 
-        response.addHeader(JWTServiceImpl.HEADER_STRING, JWTServiceImpl.TOKEN_PREFIX + token);
 
+
+        response.addHeader(JWTServiceImpl.HEADER_STRING, JWTServiceImpl.TOKEN_PREFIX + token);
+  //      response.setStatus(200);
         Map<String, Object> body = new HashMap<String, Object>();
+        body.put("status", response.getStatus());
         body.put("token", token);
         body.put("user", (User) authResult.getPrincipal());
         body.put("mensaje", String.format("Hola %s, has iniciado sesión con éxito!", ((User)authResult.getPrincipal()).getUsername()) );
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setStatus(200);
+      //  response.setStatus(401);
         response.setContentType("application/json");
     }
 

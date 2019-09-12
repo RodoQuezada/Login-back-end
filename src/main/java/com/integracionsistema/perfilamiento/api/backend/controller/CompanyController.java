@@ -5,12 +5,12 @@ import com.integracionsistema.perfilamiento.api.backend.models.services.ICompany
 import com.integracionsistema.perfilamiento.api.backend.view.xml.CompanyList;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/api/company")
 public class CompanyController {
 
@@ -52,5 +52,10 @@ public class CompanyController {
     public Company save(@RequestBody @Valid Company company){
         return companyServices.save(company);
     }
+
+
+
+
+
 
 }

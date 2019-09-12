@@ -18,10 +18,10 @@ public class BackEndApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String password = " ";
+        String password = "";
         for (int i= 0; i<2; i++){
             String bcryptpassword = passwordEncoder.encode(password);
-      //     System.out.println(bcryptpassword);
+       //    System.out.println(bcryptpassword);
         }
     }
 }

@@ -20,10 +20,13 @@ public class Cliente implements Serializable {
     private String direccion;
     private String email;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TipoCliente tipoCliente;
+
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, String rut, int telefono, String direccion, String email) {
+    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, String rut, int telefono, String direccion, String email, TipoCliente tipoCliente) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -31,6 +34,7 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
+        this.tipoCliente = tipoCliente;
     }
 
     public Long getId() {
@@ -96,4 +100,16 @@ public class Cliente implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(TipoCliente tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+
+
+    private static final long serialVersionUID = 1l;
 }

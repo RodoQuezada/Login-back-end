@@ -8,8 +8,6 @@ import java.util.List;
 @Table(name = "users")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1l;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -62,4 +60,6 @@ public class User implements Serializable {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+    private static final long serialVersionUID = 1l;
 }
